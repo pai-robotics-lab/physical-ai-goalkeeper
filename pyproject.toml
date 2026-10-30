@@ -1,0 +1,37 @@
+[build-system]
+requires = ["setuptools>=75"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "physical-ai-goalkeeper"
+version = "0.1.0"
+description = "MLP trajectory prediction and Genesis PD control for a robot goalkeeper"
+readme = "README.md"
+requires-python = ">=3.10,<3.14"
+dependencies = [
+  "genesis-world==1.2.1",
+  "matplotlib>=3.8,<4",
+  "numpy>=1.26,<3",
+]
+
+[project.optional-dependencies]
+dev = [
+  "pytest>=8.3,<10",
+  "ruff>=0.11,<1",
+]
+media = [
+  "imageio-ffmpeg>=0.6,<1",
+  "pillow>=10,<13",
+]
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-p no:cacheprovider"
+
+[tool.ruff]
+line-length = 100
+target-version = "py310"
+extend-exclude = [".venv", "tmp"]

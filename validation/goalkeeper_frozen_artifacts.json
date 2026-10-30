@@ -1,0 +1,26 @@
+{
+  "algorithm": "SHA256",
+  "captured_date": "2026-10-30",
+  "files": [
+    {
+      "path": "artifacts/goalkeeper_model.pt",
+      "sha256": "FB3DE78FBC3CFE299C34BF2B436EE68E1C1905E92A092F659A4EB55AB5DA8234",
+      "bytes": 10389
+    },
+    {
+      "path": "artifacts/goalkeeper_model.json",
+      "sha256": "AA2FF6625AEADAF5481B101030B1C2236BC8271AFDA9DB0DAEF75F1388541545",
+      "bytes": 174
+    },
+    {
+      "path": "videos/PAI_final_goalkeeper.mp4",
+      "sha256": "FFABEF9267F2A34A247D24FF797C57861FC3842BA50B264DA52D249CD1143BFF",
+      "bytes": 342920
+    },
+    {
+      "path": "docs/technical_report.pdf",
+      "sha256": "964CD1ABE2F95FA3D5DFDD0AA7E719362D5CA0DEE50F001D8C94D862848F8101",
+      "bytes": 585460
+    }
+  ]
+}

@@ -1,0 +1,135 @@
+{
+  "frozen_artifacts": [
+    {
+      "path": "artifacts/goalkeeper_model.pt",
+      "expected_sha256": "FB3DE78FBC3CFE299C34BF2B436EE68E1C1905E92A092F659A4EB55AB5DA8234",
+      "actual_sha256": "FB3DE78FBC3CFE299C34BF2B436EE68E1C1905E92A092F659A4EB55AB5DA8234",
+      "expected_bytes": 10389,
+      "actual_bytes": 10389,
+      "passed": true
+    },
+    {
+      "path": "artifacts/goalkeeper_model.json",
+      "expected_sha256": "AA2FF6625AEADAF5481B101030B1C2236BC8271AFDA9DB0DAEF75F1388541545",
+      "actual_sha256": "AA2FF6625AEADAF5481B101030B1C2236BC8271AFDA9DB0DAEF75F1388541545",
+      "expected_bytes": 174,
+      "actual_bytes": 174,
+      "passed": true
+    },
+    {
+      "path": "videos/goalkeeper_ai_raw.mp4",
+      "expected_sha256": "3DC0EEC293047CEEF372D7D098A54A7B89D67A49F58FC9DD587C2489233B38EC",
+      "actual_sha256": "3DC0EEC293047CEEF372D7D098A54A7B89D67A49F58FC9DD587C2489233B38EC",
+      "expected_bytes": 335155,
+      "actual_bytes": 335155,
+      "passed": true
+    },
+    {
+      "path": "videos/goalkeeper_baseline_raw.mp4",
+      "expected_sha256": "33332CC898A5BBD3724913CB3912E55138A928B647D0B5BC3A9F89B7640D3815",
+      "actual_sha256": "33332CC898A5BBD3724913CB3912E55138A928B647D0B5BC3A9F89B7640D3815",
+      "expected_bytes": 333016,
+      "actual_bytes": 333016,
+      "passed": true
+    },
+    {
+      "path": "videos/PAI_final_goalkeeper.mp4",
+      "expected_sha256": "FFABEF9267F2A34A247D24FF797C57861FC3842BA50B264DA52D249CD1143BFF",
+      "actual_sha256": "FFABEF9267F2A34A247D24FF797C57861FC3842BA50B264DA52D249CD1143BFF",
+      "expected_bytes": 342920,
+      "actual_bytes": 342920,
+      "passed": true
+    },
+    {
+      "path": "output/pdf/説明資料_PAI最終課題_draft.pdf",
+      "expected_sha256": "CB218A75B0C38617528D702AC9C7F65BA103F2E79C9C8D2D7F6173BB7BB88361",
+      "actual_sha256": "CB218A75B0C38617528D702AC9C7F65BA103F2E79C9C8D2D7F6173BB7BB88361",
+      "expected_bytes": 224947,
+      "actual_bytes": 224947,
+      "passed": true
+    }
+  ],
+  "environment": {
+    "python": "3.12.14",
+    "platform": "Windows-10-10.0.19045-SP0",
+    "torch": "2.14.1+cpu",
+    "genesis": "1.2.1",
+    "backend": "cpu"
+  },
+  "model": {
+    "class": "TrajectoryRegressor",
+    "layers": [
+      "Linear",
+      "Tanh",
+      "Linear",
+      "Tanh",
+      "Linear"
+    ],
+    "config": {
+      "dt": 0.02,
+      "start_x": 2.5,
+      "goal_x": 0.0,
+      "observation_steps": [
+        0,
+        10,
+        20,
+        30
+      ],
+      "max_steps": 300,
+      "sensor_noise_std": 0.004,
+      "goalie_half_width": 0.18,
+      "goalie_max_speed": 2.5
+    },
+    "retrained_max_weight_difference": 0.0,
+    "mlp_inference_used": true
+  },
+  "validation": {
+    "train_samples": 4000,
+    "validation_samples": 1000,
+    "train_seed": 7,
+    "validation_seed": 8,
+    "epochs": 300,
+    "checkpoint_metrics": {
+      "ai_mae": 0.07831326872110367,
+      "baseline_mae": 0.38834479451179504,
+      "ai_save_rate": 0.91,
+      "baseline_save_rate": 0.26,
+      "train_loss": 0.011701202020049095
+    },
+    "reproduced_metrics": {
+      "ai_mae": 0.07831326872110367,
+      "baseline_mae": 0.38834479451179504,
+      "ai_save_rate": 0.91,
+      "baseline_save_rate": 0.26
+    },
+    "metric_delta": {
+      "ai_mae": 0.0,
+      "baseline_mae": 0.0,
+      "ai_save_rate": 0.0,
+      "baseline_save_rate": 0.0
+    },
+    "success_rate_definition": "prediction proxy: abs(predicted crossing y - actual crossing y) <= 0.18 m"
+  },
+  "genesis_robot": {
+    "seed": 21,
+    "joint": "goalkeeper_slide",
+    "joint_type": "prismatic",
+    "controller": "PD position control",
+    "success_definition": "abs(actual Genesis joint position - ball crossing y) <= 0.18 m",
+    "results": {
+      "ai": {
+        "shots": 10,
+        "save_rate": 1.0,
+        "mean_interception_error": 0.06744346427952747,
+        "max_robot_tracking_error": 0.0011130571365356445
+      },
+      "baseline": {
+        "shots": 10,
+        "save_rate": 0.1,
+        "mean_interception_error": 0.4991726730758785,
+        "max_robot_tracking_error": 0.000598907470703125
+      }
+    },
+    "actual_joint_position_used": true
+  }
+}
